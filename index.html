@@ -42,7 +42,7 @@
       </div>
 
       <!-- complete todos container -->
-      <section class="flex flex-col gap-4">
+      <section class="flex flex-col gap-4 min-w-[328px] mx-auto">
         <div class="flex flex-col gap-1">
           <h3
             class="text-[16px] text-[#242424] font-extrabold md:text-[20px] dark:text-[#FFFFFF]"
@@ -59,8 +59,41 @@
           <!-- completed tasks -->
 
           <div
-            class="min-w-94 max-w-[744px] h-16 border border-[#E9E9E9] rounded-xl"
-          ></div>
+            class="min-w-94 max-w-[744px] h-16 border border-[#E9E9E9] rounded-xl px-4 py-3 flex items-center justify-between dark:bg-[#091120] dark:border-none relative"
+          >
+            <div
+              class="w-1 h-11 md:h-12 bg-[#FFAF37] rounded-l-lg absolute right-0"
+            ></div>
+            <div class="flex justify-start items-center gap-4 md:gap-3">
+              <input
+                type="checkbox"
+                id="task-check"
+                class="w-6 h-6 rounded-lg border-[#E9E9E9] dark:border-none cursor-pointer"
+              />
+              <label
+                for="task-check"
+                class="tex-[14px] text-[#323233] font-semibold line-through md:text-[16px] dark:text-white"
+              >
+                خرید میوه و سبزیجات و لبنیات برای خانه
+              </label>
+            </div>
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-7 text-[#525252] dark:text-white"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
       </section>
     </main>
