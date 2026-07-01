@@ -8,11 +8,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
 
-  <body>
+  <body class="dark:bg-[#060C18]">
     <!-- sidebar -->
     <aside></aside>
 
-    <main>
+    <main class="container">
       <!-- mobile header -->
       <header></header>
 
@@ -42,7 +42,27 @@
       </div>
 
       <!-- complete todos container -->
-      <section></section>
+      <section class="flex flex-col gap-4">
+        <div class="flex flex-col gap-1">
+          <h3
+            class="text-[16px] text-[#242424] font-extrabold md:text-[20px] dark:text-[#FFFFFF]"
+          >
+            تسک‌های انجام شده
+          </h3>
+          <p
+            class="text-[12px] text-[#696969] md:text-[14px] dark:text-[#848890]"
+          >
+            <span>3</span> تسک را انجام داده‌اید.
+          </p>
+        </div>
+        <div>
+          <!-- completed tasks -->
+
+          <div
+            class="min-w-94 max-w-[744px] h-16 border border-[#E9E9E9] rounded-xl"
+          ></div>
+        </div>
+      </section>
     </main>
 
     <script type="module" src="./js/main.js"></script>
