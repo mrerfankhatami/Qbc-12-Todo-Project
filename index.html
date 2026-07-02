@@ -12,7 +12,7 @@
     <!-- sidebar -->
     <aside></aside>
 
-    <main>
+    <main class="max-w-sm mx-auto p-4">
       <!-- mobile header -->
       <header></header>
 
@@ -32,56 +32,72 @@
         <input type="text" />
         <input type="text" />
       </section>
+<!-- uncomplete todos container -->
+<section>
 
-      <!-- uncomplete todos container -->
-      <section>
-        <div>
-          <!-- نوار رنگی سمت راست -->
-           <div></div>
-           <!-- محتوای کارت -->
-            <div>
-              <!-- ردیف اول:چک باکس+عنوان -->
-               <div>
-                <input type="checkbox" />
-                <span>جلسه با مدیران پروژه</span>
-              </div>
-              <!-- تگ اولویت -->
-               <span>بالا</span>
-               <!-- توضیحات -->
-                <p>جلسه با محسن یگانه و مریم جلالی</p>
-            </div>
-            <!-- آیکون سه نقطه -->
-             <button>&#8942;</button>
-             </div>
-             <!-- کارت دوم -->
-              <div>
-                <div></div>
-                <div>
-                  <div>
-                    <input type="checkbox" />
-                     <span>خرید میوه و سبزیجات و لبنیات برای خانه</span>
-                  </div>
-                   <span>متوسط</span>
-                   <p>سوپرمارکت یاران دریایی</p>
-                </div>
-                <button>&#8942;</button>
-              </div>
-              <!-- کارت سوم -->
-<div>
-  <div></div>
-  <div>
-    <div>
-      <input type="checkbox" />
-      <span>تماس با جمشید</span>
+  <!-- کارت اول -->
+  <div class="flex items-center bg-white rounded-xl border border-[#E9E9E9] mb-3">
+    <div class="w-1 bg-[#FF5F37] rounded-[8px] self-stretch my-3"></div>
+    <div class="flex-1 py-3 px-4">
+      <div class="flex items-start gap-4">
+        <input type="checkbox" class="w-5 h-5 rounded-[5px] border border-[#CCCCCC] appearance-none mt-1" />
+        <div class="flex flex-col gap-1">
+          <span class="text-[14px] font-semibold text-[#242424]">جلسه با مدیران پروژه</span>
+          <span class="text-[10px] font-semibold bg-[#FFE2DB] text-[#FF5F37] px-[8px] py-[2px] rounded-[4px] h-[20px] w-[28px] inline-flex items-center justify-center">بالا</span>
+          <p class="text-[12px] font-normal text-[#7D7D7F] mt-2">جلسه با محسن یگانه و مریم جلالی</p>
+        </div>
+      </div>
     </div>
-    <span>پایین</span>
-    <p>باید در مورد کارهای باقیمانده از پروژه قبلی صحبت کنیم.</p>
+    <button class="flex flex-col gap-[3px] items-center justify-center py-3 px-2 self-start">
+      <span class="w-1 h-1 rounded-full bg-[#525252]"></span>
+      <span class="w-1 h-1 rounded-full bg-[#525252]"></span>
+      <span class="w-1 h-1 rounded-full bg-[#525252]"></span>
+    </button>
   </div>
-  <button>&#8942;</button>
-</div>
-      </section>
-              
 
+  <!-- کارت دوم -->
+  <div class="flex items-center bg-white rounded-xl border border-[#E9E9E9] mb-3">
+    <div class="w-1 bg-[#FFAF37] rounded-[8px] self-stretch my-3"></div>
+    <div class="flex-1 py-3 px-4">
+      <div class="flex items-start gap-4">
+        <input type="checkbox" class="w-5 h-5 rounded-[5px] border border-[#CCCCCC] appearance-none mt-1" />
+        <div class="flex flex-col gap-1">
+          <span class="text-[14px] font-semibold text-[#242424]">خرید میوه و سبزیجات و لبنیات برای خانه</span>
+          <span class="text-[10px] font-semibold bg-[#FFEFD6] text-[#FFAF37] px-[8px] py-[2px] rounded-[4px] h-[20px] w-[47px] inline-flex items-center justify-center">متوسط</span>
+          <p class="text-[12px] font-normal text-[#7D7D7F] mt-2">سوپرمارکت یاران دریایی</p>
+        </div>
+      </div>
+    </div>
+    <button class="flex flex-col gap-[3px] items-center justify-center py-3 px-2 self-start">
+      <span class="w-1 h-1 rounded-full bg-[#525252]"></span>
+      <span class="w-1 h-1 rounded-full bg-[#525252]"></span>
+      <span class="w-1 h-1 rounded-full bg-[#525252]"></span>
+    </button>
+  </div>
+
+  <!-- کارت سوم -->
+  <div class="flex items-center bg-white rounded-xl border border-[#E9E9E9] mb-3">
+    <div class="w-1 bg-[#11A483] rounded-[8px] self-stretch my-3"></div>
+    <div class="flex-1 py-3 px-4">
+      <div class="flex items-start gap-4">
+        <input type="checkbox" class="w-5 h-5 rounded-[5px] border border-[#CCCCCC] appearance-none mt-1" />
+        <div class="flex flex-col gap-1">
+          <span class="text-[14px] font-semibold text-[#242424]">تماس با جمشید</span>
+          <span class="text-[10px] font-bold bg-[#C3FFF1] text-[#11A483] px-[8px] py-[2px] rounded-[4px] h-[20px] w-[38px] inline-flex items-center justify-center">پایین</span>
+          <p class="text-[12px] font-normal text-[#7D7D7F] mt-2">باید در مورد کارهای باقیمانده از پروژه قبلی صحبت کنیم.</p>
+        </div>
+      </div>
+    </div>
+    <button class="flex flex-col gap-[3px] items-center justify-center py-3 px-2 self-start">
+      <span class="w-1 h-1 rounded-full bg-[#525252]"></span>
+      <span class="w-1 h-1 rounded-full bg-[#525252]"></span>
+      <span class="w-1 h-1 rounded-full bg-[#525252]"></span>
+    </button>
+  </div>
+  
+</section>
+
+    
 
       <div>
         <h2>تسک های انجام شده</h2>
