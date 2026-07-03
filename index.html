@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
 
-  <body class="dark:bg-[#060C18]">
+  <body class="dark:bg-[#060C18] overflow-x-hidden">
     <!-- sidebar -->
     <aside></aside>
 
@@ -59,24 +59,25 @@
           <!-- completed tasks -->
 
           <div
-            class="min-w-94 max-w-[744px] h-16 border border-[#E9E9E9] rounded-xl px-4 py-3 flex items-center justify-between dark:bg-[#091120] dark:border-none relative"
+            class="min-w-94 max-w-[744px] min-h-16 border border-[#E9E9E9] rounded-xl px-4 py-3 flex items-center justify-between dark:bg-[#091120] dark:border-none relative"
           >
             <div
               class="w-1 h-11 md:h-12  bg-[var(--color-primary-yellow)] rounded-l-lg absolute right-0"
             ></div>
-            <div class="flex justify-start items-center gap-4 md:gap-3">
+            <div class="flex justify-start items-center gap-4 md:gap-3 max-w-[700px]">
               <input
                 type="checkbox"
                 id="task-check"
                 checked
                 class="w-5 h-5 rounded-[5px] border border-[#CCCCCC] appearance-none checked:bg-[#007BFF] checked:border-[#007BFF] focus:ring-2 focus:ring-[#007BFF]"
               />
-              <label
+             <div class="max-w-[550px]">
+               <label
                 for="task-check"
                 class="tex-[14px] text-[#323233] font-semibold line-through md:text-[16px] dark:text-white"
               >
                 خرید میوه و سبزیجات و لبنیات برای خانه
-              </label>
+             </div>
             </div>
              <div class="absolute w-20 h-8 border border-[#EBEDEF] rounded-lg p-1 flex items-center justify-around left-10 top-4 dark:bg-[#0B192D] dark:border-[#293242]">
 
