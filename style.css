@@ -13,6 +13,11 @@
   --color-primary-green: #11a483;
   --color-secondary-green: #c3fff1;
   --color-primary-blue: #007bff;
+  --color-secondary-blue: #1a56db;
+  --color-blue-hover: #F0F5FF;
+  --white: #ffffff;
+  --black: #242424;
+  --dark-blue-sidebar: #091120;
 }
 
 * {
