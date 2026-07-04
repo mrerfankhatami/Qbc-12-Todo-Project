@@ -20,18 +20,81 @@
       <div></div>
 
       <div>
-        <h2>تسک های امروز</h2>
-        <p>3 تسک را باید انجام دهید.</p>
+        <h2 class="text-right text-xl font-black px-5 pt-5 dark:text-white">تسک های امروز</h2>
+        <p class="text-right text-xs text-[#848890] opacity-70 px-5 pt-3 dark:text-gray-300">3 تسک را باید انجام دهید.</p>
       </div>
 
       <!-- add todo button -->
-      <div>افزودن وظیفه جدید</div>
+       
+      <div class="border border-dashed border-gray-300 p-5 m-5 rounded-xl text-[#57A8FF] dark:bg-bl dark:border-[#203E62] dark:bg-[#091120]">
+        <button class="cursor-pointer pl-2">+</button>
+         افزودن وظیفه جدید
+      </div>
 
+      <img src="./assets/images/img1.png" alt="img1" class="mx-auto max-w-full h-auto p-5">
+
+      
       <!-- add todo section -->
-      <section>
-        <input type="text" />
-        <input type="text" />
+      <section class="bg-[#FFFFFF] border border-[#E9E9E9] rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.06)] p-5 m-5 dark:bg-black dark:border-[#3D3D3D]">
+        <input type="text" placeholder="نام تسک" class="text-[#7D7D7F] pb-2 text-lg dark:text-[#FFFFFF]" />
+        <br>
+        <input type="text" placeholder="توضیحات" class="text-[#AFAEB2] text-xs dark:text-[#83878F]"/>
+
+        <button class="flex items-center rounded-lg border border-[#E9E9E9] my-5 p-1 cursor-pointer dark:border-[#83878F]">
+          <img src="./assets/images/tag-right.svg" alt="tags">
+          <span class=" text-neutral-400 m-1 text-sm">تگ‌ها</span>
+        </button>
+
+        <button class="flex items-center rounded-lg border border-[#E9E9E9] my-5 p-1 cursor-pointer dark:border-[#83878F]">
+          <img src="./assets/images/tag-right 2.svg" alt="tags">
+          <span class=" text-neutral-400 m-1 text-sm">تگ‌ها</span>
+        </button>
+
+        <button class="inline-flex gap-2 text-[#11A483] bg-[#C3FFF1] rounded-lg px-2 py-1 dark:bg-[#233332]">
+          <svg class="w-4  text-black dark:text-white cursor-pointer " fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg> 
+          <span>پایین</span>
+        </button>
+
+        <button class="inline-flex gap-2  bg-[#FFEFD6] rounded-lg px-2 py-1 dark:bg-[#302F2D]">
+          <svg class="w-4  text-black dark:text-white cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>  
+          <span class="text-[#FFAF37]">متوسط</span>
+        </button>
+
+        <button class="inline-flex gap-2 text-[#FF5F37] bg-[#FFE2DB] rounded-lg px-2 py-1 dark:bg-[#3D2327]">
+          <svg class="w-4  text-black dark:text-white cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg> 
+          <span>بالا</span>
+        </button>
+        
+
+        <div class="inline-flex p-2 m-5 gap-5 border border-[#EBEDEF] rounded-lg shadow-[0_12px_24px_-6px_rgba(20,20,25,0.06)] dark:bg-[#0B192D] dark:border-[#293242]">
+          <button class="bg-[#C3FFF1] hover:bg-[#8CE6CC] rounded-lg p-2 text-xs text-[#11A483] cursor-pointer dark:bg-[#233332]">پایین</button>
+          <div class="h-6 w-px bg-[#EBEDEF] dark:bg-[#293242]"></div>
+          <button class="bg-[#FFEFD6] hover:bg-[#FFD9A8] rounded-lg p-2 text-xs text-[#FFAF37] cursor-pointer dark:bg-[#302F2D]">متوسط</button>
+          <div class="h-6 w-px bg-[#EBEDEF] dark:bg-[#293242]"></div>
+          <button class="bg-[#FFE2DB] hover:bg-[#FFC4B8] rounded-lg p-2 text-xs text-[#FF5F37] cursor-pointer dark:bg-[#3D2327]">بالا</button>
+        </div>
+
+        
+
+        <div class="flex border-t border-[#E9E9E9] pt-5 px-5 dark:border-[#3D3D3D]" dir="ltr">
+          <button class="border rounded-lg opacity-60 bg-[#007BFF] text-sm text-white py-2 px-3 hover:opacity-100 cursor-pointer dark:bg-[#002247] dark:border-black">اضافه کردن تسک</button>
+          <button class="border border-[#F5F5F5] mx-1 p-3 bg-[#F5F5F5] rounded-lg hover:bg-[#E8E8E8] cursor-pointer dark:bg-[#0C1B31] dark:border-black">
+            <svg class="w-4  text-[#9E9E9E] dark:text-white " fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
       </section>
+
+      
+  
+      
 
       <!-- uncomplete todos container -->
       <section></section>
