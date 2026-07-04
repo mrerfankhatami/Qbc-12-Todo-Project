@@ -36,9 +36,9 @@
     <!-- add todo section -->
     <section
       class="bg-[#FFFFFF] border border-[#E9E9E9] rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.06)] p-5 m-5 dark:bg-black dark:border-[#3D3D3D] max-w-[1000px] min-w-[250px] mx-auto">
-      <input type="text" placeholder="نام تسک" class="text-[#242424] placeholder:text-[#7D7D7F] focus:outline-none pb-2 text-lg dark:text-[#FFFFFF]" />
+      <input id="title-input" type="text" placeholder="نام تسک" class="text-[#242424] placeholder:text-[#7D7D7F] focus:outline-none pb-2 text-lg dark:text-[#FFFFFF]" />
       <br>
-      <input type="text" placeholder="توضیحات" class="text-[#AFAEB2] text-xs focus:outline-none dark:text-[#83878F]" />
+      <input id="description-input" type="text" placeholder="توضیحات" class="text-[#AFAEB2] text-xs focus:outline-none dark:text-[#83878F]" />
 
       <button
         class="flex items-center rounded-lg border border-[#E9E9E9] my-5 p-1 cursor-pointer dark:border-[#83878F]">
@@ -52,7 +52,7 @@
         <span class=" text-neutral-400 m-1 text-sm">تگ‌ها</span>
       </button>
 
-      <button class="inline-flex gap-2 text-[#11A483] bg-[#C3FFF1] rounded-lg px-2 py-1 dark:bg-[#233332]">
+      <button data-color="#11A483" id="low-priority-button" class="inline-flex gap-2 text-[#11A483] bg-[#C3FFF1] rounded-lg px-2 py-1 dark:bg-[#233332]">
         <svg class="w-4  text-black dark:text-white cursor-pointer " fill="none" stroke="currentColor"
           viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -60,7 +60,7 @@
         <span>پایین</span>
       </button>
 
-      <button class="inline-flex gap-2  bg-[#FFEFD6] rounded-lg px-2 py-1 dark:bg-[#302F2D]">
+      <button data-color="#FFAF37" id="medium-priority-button" id="low-priority-button" class="inline-flex gap-2  bg-[#FFEFD6] rounded-lg px-2 py-1 dark:bg-[#302F2D]">
         <svg class="w-4  text-black dark:text-white cursor-pointer" fill="none" stroke="currentColor"
           viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -68,7 +68,7 @@
         <span class="text-[#FFAF37]">متوسط</span>
       </button>
 
-      <button class="inline-flex gap-2 text-[#FF5F37] bg-[#FFE2DB] rounded-lg px-2 py-1 dark:bg-[#3D2327]">
+      <button data-color="#FF5F37" id="high-priority-button" class="inline-flex gap-2 text-[#FF5F37] bg-[#FFE2DB] rounded-lg px-2 py-1 dark:bg-[#3D2327]">
         <svg class="w-4  text-black dark:text-white cursor-pointer" fill="none" stroke="currentColor"
           viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -92,7 +92,7 @@
 
 
       <div class="flex border-t border-[#E9E9E9] pt-5  dark:border-[#3D3D3D]" dir="ltr">
-        <button
+        <button id="sumbit-button"
           class="border rounded-lg opacity-60 bg-[#007BFF] text-sm text-white py-2 px-3 hover:opacity-100 cursor-pointer dark:bg-[#002247] dark:border-black">اضافه
           کردن تسک</button>
         <button
