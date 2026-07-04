@@ -13,7 +13,7 @@
   <!-- sidebar -->
   <aside></aside>
 
-  <main class="container max-w-lg mx-auto p-4">
+  <main class="container  mx-auto p-4 max-w-[1000px] min-w-[250px]"> <!-- max-w-lg -->  
     <!-- mobile header -->
     <header></header>
 
@@ -28,17 +28,17 @@
     <!-- add todo button -->
 
     <div
-      class="border border-dashed border-gray-300 p-5 m-5 rounded-xl text-[#57A8FF] dark:bg-bl dark:border-[#203E62] dark:bg-[#091120]">
+      class="border border-dashed border-gray-300 p-5 m-5 rounded-xl text-[#57A8FF] dark:bg-bl dark:border-[#203E62] dark:bg-[#091120] max-w-[1000px] min-w-[250px] mx-auto">
       <button class="cursor-pointer pl-2">+</button>
       افزودن وظیفه جدید
     </div>
 
-    <img src="./assets/images/img1.png" alt="img1" class="mx-auto max-w-full h-auto p-5">
+    <img src="./assets/images/img1.png" alt="img1" class="mx-auto h-auto p-5 max-w-[1000px] min-w-[250px]">
 
 
     <!-- add todo section -->
     <section
-      class="bg-[#FFFFFF] border border-[#E9E9E9] rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.06)] p-5 m-5 dark:bg-black dark:border-[#3D3D3D]">
+      class="bg-[#FFFFFF] border border-[#E9E9E9] rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.06)] p-5 m-5 dark:bg-black dark:border-[#3D3D3D] max-w-[1000px] min-w-[250px] mx-auto">
       <input type="text" placeholder="نام تسک" class="text-[#7D7D7F] pb-2 text-lg dark:text-[#FFFFFF]" />
       <br>
       <input type="text" placeholder="توضیحات" class="text-[#AFAEB2] text-xs dark:text-[#83878F]" />
@@ -107,7 +107,7 @@
       </div>
     </section>
     <!-- uncomplete todos container -->
-    <section class="w-full max-w-[744px] mx-auto px-4">
+    <section class=" mx-auto  max-w-[1000px] min-w-[250px]"> <!-- px-4 -->
 
       <!-- کارت اول -->
       <div
@@ -183,7 +183,7 @@
     </section>
 
     <!-- complete todos container -->
-    <section class="flex flex-col gap-4 min-w-[328px] mx-auto">
+    <section class="flex flex-col gap-4 max-w-[1000px] min-w-[250px] mx-auto mt-16">
       <div class="flex flex-col gap-1">
         <h3 class="text-[16px] text-[#242424] font-extrabold md:text-[20px] dark:text-[#FFFFFF]">
           تسک‌های انجام شده
@@ -192,11 +192,11 @@
           <span>3</span> تسک را انجام داده‌اید.
         </p>
       </div>
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-4 w-full mx-auto">
         <!-- completed tasks -->
 
         <div
-          class="min-w-94 max-w-[744px] min-h-16 border border-[#E9E9E9] rounded-xl px-4 py-3 flex items-center justify-between dark:bg-[#091120] dark:border-none relative">
+          class="w-full min-h-16 border border-[#E9E9E9] rounded-xl px-4 py-3 flex items-center justify-between dark:bg-[#091120] dark:border-none relative">
           <div class="w-1 h-11 md:h-12  bg-[var(--color-primary-yellow)] rounded-l-lg absolute right-0"></div>
           <div class="flex justify-start items-center gap-4 md:gap-3 max-w-[700px]">
             <input type="checkbox" id="task-check" checked
@@ -238,7 +238,7 @@
         </div>
 
         <div
-          class="min-w-94 max-w-[744px] h-16 border border-[#E9E9E9] rounded-xl px-4 py-3 flex items-center justify-between dark:bg-[#091120] dark:border-none relative">
+          class="w-full h-16 border border-[#E9E9E9] rounded-xl px-4 py-3 flex items-center justify-between dark:bg-[#091120] dark:border-none relative">
           <div class="w-1 h-11 md:h-12  bg-[var(--color-primary-red)] rounded-l-lg absolute right-0"></div>
           <div class="flex justify-start items-center gap-4 md:gap-3">
             <input type="checkbox" id="task-check" checked
@@ -259,7 +259,7 @@
         </div>
 
         <div
-          class="min-w-94 max-w-[744px] h-16 border border-[#E9E9E9] rounded-xl px-4 py-3 flex items-center justify-between dark:bg-[#091120] dark:border-none relative">
+          class="w-full h-16 border border-[#E9E9E9] rounded-xl px-4 py-3 flex items-center justify-between dark:bg-[#091120] dark:border-none relative">
           <div class="w-1 h-11 md:h-12  bg-[var(--color-primary-green)] rounded-l-lg absolute right-0"></div>
           <div class="flex justify-start items-center gap-4 md:gap-3">
             <input type="checkbox" id="task-check" checked
