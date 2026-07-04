@@ -14,18 +14,21 @@ function addTodo() {
   };
 
   todos = [...todos, newTodo];
+  //   saveTodos(todos);
 }
 
 // render todo list
 function renderTodo() {}
 
-// Load Todos from local storage
-function loadTodos() {
-  todos = JSON.parse(localStorage.getItem("todos")) || [];
-}
+// // Load Todos from local storage
+// function loadTodosّFromLocalStorage() {
+//   todos = JSON.parse(localStorage.getItem("todos")) || [];
+// }
 
-// Save Todos to local storage
-function saveTodos() {}
+// // Save Todos to local storage
+// function saveTodosToLocalStorage(todosArrey) {
+//   localStorage.setItem("todos", JSON.stringify(todosArrey));
+// }
 
 // update todo
 function updateTodo() {}
