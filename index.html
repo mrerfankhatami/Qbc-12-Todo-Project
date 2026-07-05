@@ -468,27 +468,30 @@
       <br>
       <input id="description-input" type="text" placeholder="توضیحات" class="text-[#AFAEB2] text-xs focus:outline-none dark:text-[#83878F]" />
 
-      <button
+      <button id="tag-button"
         class="flex items-center rounded-lg border border-[#E9E9E9] my-5 p-1 cursor-pointer dark:border-[#83878F]">
-        <img src="./assets/images/tag-right.svg" alt="tags">
+        <img src="./assets/images/tag-right.svg" class="duration-300 transition-all" alt="tags" id="tag-image">
         <span class=" text-neutral-400 m-1 text-sm">تگ‌ها</span>
       </button>
 
-      <button
+      <!-- <button
         class="flex items-center rounded-lg border border-[#E9E9E9] my-5 p-1 cursor-pointer dark:border-[#83878F]">
         <img src="./assets/images/tag-right 2.svg" alt="tags">
         <span class=" text-neutral-400 m-1 text-sm">تگ‌ها</span>
-      </button>
+      </button> -->
 
-      <button data-color="#11A483" id="low-priority-button" class="inline-flex gap-2 text-[#11A483] bg-[#C3FFF1] rounded-lg px-2 py-1 dark:bg-[#233332]">
+      <div id="priortiy-div" class="">
+        
+
+      <!-- <button data-color="#11A483" id="low-priority-button" class="inline-flex gap-2 text-[#11A483] bg-[#C3FFF1] rounded-lg px-2 py-1 dark:bg-[#233332]">
         <svg class="w-4  text-black dark:text-white cursor-pointer " fill="none" stroke="currentColor"
           viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
         <span>پایین</span>
-      </button>
+      </button> -->
 
-      <button data-color="#FFAF37" id="medium-priority-button" id="low-priority-button" class="inline-flex gap-2  bg-[#FFEFD6] rounded-lg px-2 py-1 dark:bg-[#302F2D]">
+      <!-- <button data-color="#FFAF37" id="medium-priority-button" id="low-priority-button" class="inline-flex gap-2  bg-[#FFEFD6] rounded-lg px-2 py-1 dark:bg-[#302F2D]">
         <svg class="w-4  text-black dark:text-white cursor-pointer" fill="none" stroke="currentColor"
           viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -502,24 +505,29 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
         <span>بالا</span>
-      </button>
+      </button> -->
+      </div>
 
 
       <div
-        class="inline-flex p-2 m-5 gap-5 border border-[#EBEDEF] rounded-lg shadow-[0_12px_24px_-6px_rgba(20,20,25,0.06)] dark:bg-[#0B192D] dark:border-[#293242]">
+      id="choose-priority"
+        class=" hidden justify-between items-center p-2 m-5 gap-5 border border-[#EBEDEF] rounded-lg shadow-[0_12px_24px_-6px_rgba(20,20,25,0.06)] dark:bg-[#0B192D] dark:border-[#293242]">
         <button
+        id="low" data-color = "#11A483" data-secondcolor ="#C3FFF1"
           class="bg-[#C3FFF1] hover:bg-[#8CE6CC] rounded-lg p-2 text-xs text-[#11A483] cursor-pointer dark:bg-[#233332]">پایین</button>
         <div class="h-6 w-px bg-[#EBEDEF] dark:bg-[#293242]"></div>
         <button
+        id="medium" data-color = "#FFAF37" data-secondcolor ="#FFEFD6"
           class="bg-[#FFEFD6] hover:bg-[#FFD9A8] rounded-lg p-2 text-xs text-[#FFAF37] cursor-pointer dark:bg-[#302F2D]">متوسط</button>
         <div class="h-6 w-px bg-[#EBEDEF] dark:bg-[#293242]"></div>
         <button
+        id="high" data-color = "#FF5F37" data-secondcolor ="#FFE2DB"
           class="bg-[#FFE2DB] hover:bg-[#FFC4B8] rounded-lg p-2 text-xs text-[#FF5F37] cursor-pointer dark:bg-[#3D2327]">بالا</button>
       </div>
 
 
 
-      <div class="flex border-t border-[#E9E9E9] pt-5  dark:border-[#3D3D3D]" dir="ltr">
+      <div class="flex mt-5 border-t border-[#E9E9E9] pt-5  dark:border-[#3D3D3D]" dir="ltr">
         <button id="sumbit-button"
           class="border rounded-lg opacity-60 bg-[#007BFF] text-sm text-white py-2 px-3 hover:opacity-100 cursor-pointer dark:bg-[#002247] dark:border-black">اضافه
           کردن تسک</button>
