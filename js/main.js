@@ -9,6 +9,7 @@ function addTodo() {
     desc: document.getElementById("description-input").value,
     priority: priority,
     priorityColor: priorityColor,
+    prioritySecondaryColor: prioritySecondaryColor,
     completed: false,
     editing: false,
   };
@@ -18,7 +19,139 @@ function addTodo() {
 }
 
 // render todo list
-function renderTodo() {}
+function renderTodo() {
+  const incompleteContainer = document.getElementById(
+    "uncomplete-todos-container",
+  );
+  incompleteContainer.innerHTML = "";
+  todos.forEach((todo) => {
+    incompleteContainer.innerHTML += ` <div class="flex flex-col">
+      <div
+        class="flex items-center bg-white dark:bg-[#091120] rounded-xl border border-[#E9E9E9] dark:border-gray-700 mb-3 relative">
+        <div class="w-1 bg-[${todo.color}] self-stretch rounded-l-full my-3"></div>
+        <div
+            class="hidden absolute w-20 h-8 border border-[#EBEDEF] rounded-lg p-1 items-center justify-around left-5 top-2 dark:bg-[#0B192D] dark:border-[#293242]">
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="size-6 stroke-[#5C5F61] dark:stroke-[#FFFFFF] hover:stroke-red-600 hover:cursor-pointer">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+            </svg>
+
+
+            <div class="border border-[#EBEDEF] h-[20px] dark:border-[#293242]"></div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="size-6 stroke-[#5C5F61] dark:stroke-[#FFFFFF] hover:stroke-green-500 hover:cursor-pointer">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+            </svg>
+
+
+
+          </div>
+        <div class="flex-1 py-3 px-4">
+          <div class="flex items-start gap-4">
+            <input type="checkbox" id="task-check" checked
+              class="w-5 h-5 rounded-[5px] border border-[#CCCCCC] appearance-none checked:bg-[#007BFF] checked:border-[#007BFF] focus:ring-2 focus:ring-[#007BFF]" />
+            <div class="flex flex-col gap-1">
+             <div class="flex gap-3">
+               <span class="text-[14px] font-semibold text-[#242424] dark:text-white">${todo.text}</span>
+              <span
+                class="text-[10px] font-semibold bg-[${todo.prioritySecondaryColor}] text-[${todo.priorityColor}] px-2 py-1 rounded-[4px]  inline-flex items-center justify-center">${todo.priority === "high" ? "بالا" : todo.priority === "medium" ? "متوسط" : "پایین"}</span>
+             </div>
+              <p class="text-[12px] font-normal text-[#7D7D7F] dark:text-gray-400 mt-2">${todo.desc}
+              </p>
+            </div>
+          </div>
+        </div>
+        <button class="flex flex-col gap-[3px] items-center justify-center py-3 px-2 self-start cursor-pointer">
+          <span class="w-1 h-1 rounded-full bg-[#525252] dark:bg-gray-400"></span>
+          <span class="w-1 h-1 rounded-full bg-[#525252] dark:bg-gray-400"></span>
+          <span class="w-1 h-1 rounded-full bg-[#525252] dark:bg-gray-400"></span>
+        </button>
+ 
+
+      </div>
+      <!-- editing section  -->
+
+    ${
+      todo.editing
+        ? `<section
+      class="bg-[#FFFFFF] border border-[#E9E9E9] rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.06)] p-5 mb-5 dark:bg-black dark:border-[#3D3D3D] max-w-[1000px] min-w-[250px]">
+      <input type="text" placeholder="نام تسک" class="text-[#242424] placeholder:text-[#7D7D7F] focus:outline-none dark:text-[#FFFFFF] w-full" value="جلسه با مدیران پروژه" />
+      <br>
+      <input type="text" placeholder="توضیحات" class="text-[#AFAEB2] text-xs dark:text-[#83878F] w-full focus:outline-none" value="جلسه با محسن یگانه و مریم جلالی" />
+
+      <!-- <button
+        class="flex items-center rounded-lg border border-[#E9E9E9] my-5 p-1 cursor-pointer dark:border-[#83878F]">
+        <img src="./assets/images/tag-right.svg" alt="tags">
+        <span class=" text-neutral-400 m-1 text-sm">تگ‌ها</span>
+      </button>
+
+      <button
+        class="flex items-center rounded-lg border border-[#E9E9E9] my-5 p-1 cursor-pointer dark:border-[#83878F]">
+        <img src="./assets/images/tag-right 2.svg" alt="tags">
+        <span class=" text-neutral-400 m-1 text-sm">تگ‌ها</span>
+      </button> -->
+
+      <button class="inline-flex gap-2 text-[#11A483] bg-[#C3FFF1] rounded-lg px-2 py-1 dark:bg-[#233332]">
+        <svg class="w-4  text-black dark:text-white cursor-pointer " fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        <span>پایین</span>
+      </button>
+
+      <button class="inline-flex gap-2  bg-[#FFEFD6] rounded-lg px-2 py-1 dark:bg-[#302F2D]">
+        <svg class="w-4  text-black dark:text-white cursor-pointer" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        <span class="text-[#FFAF37]">متوسط</span>
+      </button>
+
+      <button class="inline-flex gap-2 text-[#FF5F37] bg-[#FFE2DB] rounded-lg px-2 py-1 dark:bg-[#3D2327]">
+        <svg class="w-4  text-black dark:text-white cursor-pointer" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        <span>بالا</span>
+      </button>
+
+
+      <div
+        class="inline-flex p-2 m-5 gap-5 border border-[#EBEDEF] rounded-lg shadow-[0_12px_24px_-6px_rgba(20,20,25,0.06)] dark:bg-[#0B192D] dark:border-[#293242]">
+        <button
+          class="bg-[#C3FFF1] hover:bg-[#8CE6CC] rounded-lg p-2 text-xs text-[#11A483] cursor-pointer dark:bg-[#233332]">پایین</button>
+        <div class="h-6 w-px bg-[#EBEDEF] dark:bg-[#293242]"></div>
+        <button
+          class="bg-[#FFEFD6] hover:bg-[#FFD9A8] rounded-lg p-2 text-xs text-[#FFAF37] cursor-pointer dark:bg-[#302F2D]">متوسط</button>
+        <div class="h-6 w-px bg-[#EBEDEF] dark:bg-[#293242]"></div>
+        <button
+          class="bg-[#FFE2DB] hover:bg-[#FFC4B8] rounded-lg p-2 text-xs text-[#FF5F37] cursor-pointer dark:bg-[#3D2327]">بالا</button>
+      </div>
+
+
+
+      <div class="flex border-t border-[#E9E9E9] pt-5  dark:border-[#3D3D3D]" dir="ltr">
+        <button
+          class="border rounded-lg opacity-60 bg-[#007BFF] text-sm text-white py-2 px-3 hover:opacity-100 cursor-pointer dark:bg-[#002247] dark:border-black">ویرایش تسک
+           </button>
+        <button
+          class="border border-[#F5F5F5] mx-1 p-3 bg-[#F5F5F5] rounded-lg hover:bg-[#E8E8E8] cursor-pointer dark:bg-[#0C1B31] dark:border-black">
+          <svg class="w-4  text-[#9E9E9E] dark:text-white " fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>`
+        : ``
+    }
+    </section>
+
+</div>`;
+  });
+}
 
 // // Load Todos from local storage
 // function loadTodosّFromLocalStorage() {
@@ -42,7 +175,7 @@ function deleteCompletedTodo() {}
 const submitButton = document.getElementById("sumbit-button");
 submitButton.addEventListener("click", () => {
   addTodo();
-  console.log(todos);
+  renderTodo();
 });
 
 const tagButton = document.getElementById("tag-button");
@@ -56,6 +189,7 @@ tagButton.addEventListener("click", () => {
 
 let priority = null;
 let priorityColor = null;
+let prioritySecondaryColor = null;
 
 choosePriority.addEventListener("click", (e) => {
   choosePriority.classList.toggle("hidden");
@@ -67,7 +201,7 @@ choosePriority.addEventListener("click", (e) => {
 
   priority = button.id;
   priorityColor = button.dataset.color;
-  const prioritySecondaryColor = button.dataset.secondcolor;
+  prioritySecondaryColor = button.dataset.secondcolor;
 
   const priortiyDiv = document.getElementById("priortiy-div");
 
