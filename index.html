@@ -456,6 +456,7 @@
     <!-- add todo button -->
 
     <div
+    id="add-task"
       class="border border-dashed border-gray-300 p-5 m-5 rounded-xl text-[#57A8FF] dark:bg-bl dark:border-[#203E62] dark:bg-[#091120] max-w-[1000px] min-w-[250px] mx-auto cursor-pointer">
       <button class="cursor-pointer pl-2">+</button>
       افزودن وظیفه جدید
@@ -463,7 +464,8 @@
 
     <!-- add todo section -->
     <section
-      class="bg-[#FFFFFF] border border-[#E9E9E9] rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.06)] p-5 m-5 dark:bg-black dark:border-[#3D3D3D] max-w-[1000px] min-w-[250px] mx-auto">
+    id="add-task-section"
+      class="hidden bg-[#FFFFFF] border border-[#E9E9E9] rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.06)] p-5 m-5 dark:bg-black dark:border-[#3D3D3D] max-w-[1000px] min-w-[250px] mx-auto duration-300 transition-all">
       <input id="title-input" type="text" placeholder="نام تسک" class="text-[#242424] placeholder:text-[#7D7D7F] focus:outline-none pb-2 text-lg dark:text-[#FFFFFF]" />
       <br>
       <input id="description-input" type="text" placeholder="توضیحات" class="text-[#AFAEB2] text-xs focus:outline-none dark:text-[#83878F]" />
@@ -532,6 +534,7 @@
           class="border rounded-lg opacity-60 bg-[#007BFF] text-sm text-white py-2 px-3 hover:opacity-100 cursor-pointer dark:bg-[#002247] dark:border-black">اضافه
           کردن تسک</button>
         <button
+        id="close-task-section"
           class="border border-[#F5F5F5] mx-1 p-3 bg-[#F5F5F5] rounded-lg hover:bg-[#E8E8E8] cursor-pointer dark:bg-[#0C1B31] dark:border-black">
           <svg class="w-4  text-[#9E9E9E] dark:text-white " fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -540,7 +543,7 @@
       </div>
     </section>
 
-    <img src="./assets/images/img1.png" alt="img1" class="mx-auto h-auto p-5 max-w-[1000px] min-w-[250px]">
+    <img id="no-task-image" src="./assets/images/img1.png" alt="img1" class="block mx-auto h-auto p-5 max-w-[1000px] min-w-[250px]">
 
 
     <!-- uncomplete todos container -->

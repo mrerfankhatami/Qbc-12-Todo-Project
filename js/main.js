@@ -151,6 +151,8 @@ function renderTodo() {
 
 </div>`;
   });
+
+  checkNoTaskImage();
 }
 
 // // Load Todos from local storage
@@ -214,4 +216,28 @@ choosePriority.addEventListener("click", (e) => {
         <span>${priority === "low" ? "پایین" : priority === "medium" ? "متوسط" : "بالا"}</span>
       </button>
 `;
+});
+
+function checkNoTaskImage() {
+  const noTaskImage = document.getElementById("no-task-image");
+
+  if (todos.length > 0) {
+    noTaskImage.classList.remove("block");
+    noTaskImage.classList.add("hidden");
+  } else if (todos.length === 0) {
+    noTaskImage.classList.add("block");
+    noTaskImage.classList.remove("hidden");
+  }
+}
+
+const addTaskBtn = document.getElementById("add-task");
+const addTaskSection = document.getElementById("add-task-section");
+const closeTaskSection = document.getElementById("close-task-section");
+
+addTaskBtn.addEventListener("click", () => {
+  addTaskSection.classList.toggle("hidden");
+});
+
+closeTaskSection.addEventListener("click", () => {
+  addTaskSection.classList.toggle("hidden");
 });
