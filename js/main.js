@@ -208,7 +208,7 @@ choosePriority.addEventListener("click", (e) => {
   const priortiyDiv = document.getElementById("priortiy-div");
 
   priortiyDiv.innerHTML = `
-    <button data-color="#11A483" id="low-priority-button" class="inline-flex gap-2 text-[${priorityColor}] bg-[${prioritySecondaryColor}] rounded-lg px-2 py-1 dark:bg-[#233332]">
+    <button data-color="#11A483" id="low-priority-button" class="inline-flex mt-5 gap-2 text-[${priorityColor}] bg-[${prioritySecondaryColor}] rounded-lg px-2 py-1 dark:bg-[#233332]">
         <svg id="priority-remove" class="w-4  text-black dark:text-white cursor-pointer " fill="none" stroke="currentColor"
           viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -216,6 +216,8 @@ choosePriority.addEventListener("click", (e) => {
         <span>${priority === "low" ? "پایین" : priority === "medium" ? "متوسط" : "بالا"}</span>
       </button>
 `;
+  tagButton.classList.toggle("hidden");
+  tagImage.classList.toggle("rotate-90");
 });
 
 function checkNoTaskImage() {
