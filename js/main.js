@@ -78,7 +78,7 @@ function renderTodo() {
     ${
       todo.editing
         ? `<section
-      class="bg-[#FFFFFF] border border-[#E9E9E9] rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.06)] p-5 mb-5 dark:bg-black dark:border-[#3D3D3D] max-w-[1000px] min-w-[250px]">
+      class="bg-[#FFFFFF] border border-[#E9E9E9] rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.06)] p-5 mb-5 dark:bg-[#060C18] dark:border-[#3D3D3D] max-w-[1000px] min-w-[250px]">
       <input type="text" placeholder="نام تسک" class="text-[#242424] placeholder:text-[#7D7D7F] focus:outline-none dark:text-[#FFFFFF] w-full" value="جلسه با مدیران پروژه" />
       <br>
       <input type="text" placeholder="توضیحات" class="text-[#AFAEB2] text-xs dark:text-[#83878F] w-full focus:outline-none" value="جلسه با محسن یگانه و مریم جلالی" />
