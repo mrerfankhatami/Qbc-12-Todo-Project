@@ -58,7 +58,7 @@ function renderTodo() {
              <div class="flex gap-3">
                <span class="text-[14px] font-semibold text-[#242424] dark:text-white">${todo.text}</span>
               <span
-                class="text-[10px] font-semibold bg-[${todo.prioritySecondaryColor}] text-[${todo.priorityColor}] px-2 py-1 rounded-[4px]  inline-flex items-center justify-center">${todo.priority === "high" ? "بالا" : todo.priority === "medium" ? "متوسط" : "پایین"}</span>
+                class="text-[10px] font-semibold bg-[${todo.prioritySecondaryColor}] dark:bg-[${todo.prioritySecondaryColor}/50] text-[${todo.priorityColor}] dark:text-[${todo.priorityColor}/70] px-2 py-1 rounded-[4px]  inline-flex items-center justify-center">${todo.priority === "high" ? "بالا" : todo.priority === "medium" ? "متوسط" : "پایین"}</span>
              </div>
               <p class="text-[12px] font-normal text-[#7D7D7F] dark:text-gray-400 mt-2">${todo.desc}
               </p>
@@ -153,6 +153,7 @@ function renderTodo() {
   });
 
   checkNoTaskImage();
+  taskCounterUpdate();
 }
 
 // // Load Todos from local storage
@@ -208,8 +209,8 @@ choosePriority.addEventListener("click", (e) => {
   const priortiyDiv = document.getElementById("priortiy-div");
 
   priortiyDiv.innerHTML = `
-    <button data-color="#11A483" id="low-priority-button" class="inline-flex mt-5 gap-2 text-[${priorityColor}] bg-[${prioritySecondaryColor}] rounded-lg px-2 py-1 dark:bg-[#233332]">
-        <svg id="priority-remove" class="w-4  text-black dark:text-white cursor-pointer " fill="none" stroke="currentColor"
+    <button data-color="${priorityColor}" id="${priority}-priority-button" class="inline-flex mt-5 gap-2 text-[${priorityColor}] bg-[${prioritySecondaryColor}] rounded-lg px-2 py-1 dark:bg-[#233332]">
+        <svg id="priority-remove" class="w-4  text-black dark:text-white cursor-pointer " fill="none" stroke="currentColor" onClick="closePriority()"
           viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -220,9 +221,8 @@ choosePriority.addEventListener("click", (e) => {
   tagImage.classList.toggle("rotate-90");
 });
 
+const noTaskImage = document.getElementById("no-task-image");
 function checkNoTaskImage() {
-  const noTaskImage = document.getElementById("no-task-image");
-
   if (todos.length > 0) {
     noTaskImage.classList.remove("block");
     noTaskImage.classList.add("hidden");
@@ -243,3 +243,21 @@ addTaskBtn.addEventListener("click", () => {
 closeTaskSection.addEventListener("click", () => {
   addTaskSection.classList.toggle("hidden");
 });
+
+window.closePriority = function () {
+  const priortiyDiv = document.getElementById("priortiy-div");
+  priortiyDiv.innerHTML = ``;
+  priority = null;
+  priorityColor = null;
+  prioritySecondaryColor = null;
+  tagButton.classList.toggle("hidden");
+};
+
+function taskCounterUpdate() {
+  const taskCounter = document.getElementById("task-counter");
+
+  taskCounter.textContent =
+    todos.length === 0
+      ? "تسکی برای امروز نداری!"
+      : `${todos.length} تسک را باید انجام دهید.`;
+}
