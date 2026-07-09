@@ -159,6 +159,7 @@ function renderTodo() {
 
   checkNoTaskImage();
   taskCounterUpdate();
+  completeTaskCounterUpdate();
 
   const completedTaskContainer = document.getElementById(
     "completed-task-container",
@@ -323,12 +324,21 @@ window.closePriority = function () {
 function taskCounterUpdate() {
   const taskCounter = document.getElementById("task-counter");
 
-  const completedTodos = todos.filter((todo) => !todo.completed);
+  const incompleteTodo = todos.filter((todo) => !todo.completed);
 
   taskCounter.textContent =
-    completedTodos.length === 0
+    incompleteTodo.length === 0
       ? "تسکی برای امروز نداری!"
-      : `${completedTodos.length} تسک را باید انجام دهید.`;
+      : `${incompleteTodo.length} تسک را باید انجام دهید.`;
+}
+
+function completeTaskCounterUpdate() {
+  const taskCounter = document.getElementById("completed-task-counter");
+  const completeTodo = todos.filter((todo) => todo.completed);
+  taskCounter.textContent =
+    completeTodo.length === 0
+      ? "تسکی برای امروز نداری!"
+      : `${completeTodo.length} تسک را باید انجام دهید.`;
 }
 
 window.openDeleteEdit = function (button) {
