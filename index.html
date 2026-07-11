@@ -7,6 +7,7 @@
   <title>Todo List</title>
   <link rel="stylesheet" href="./style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+ 
 </head>
 
   <body class="dark:bg-[#060C18] overflow-x-hidden flex">
@@ -483,6 +484,26 @@
       <div id="priortiy-div" class="">
         
 
+      
+      </div>
+
+
+      <div
+      id="choose-priority"
+        class=" hidden justify-between items-center p-2 m-5 gap-5 border border-[#EBEDEF] rounded-lg shadow-[0_12px_24px_-6px_rgba(20,20,25,0.06)] dark:bg-[#0B192D] dark:border-[#293242]">
+        <button
+        id="low" data-color = "#11A483" data-secondcolor ="#C3FFF1"
+          class="bg-[#C3FFF1] hover:bg-[#8CE6CC] rounded-lg p-2 text-xs text-[#11A483] cursor-pointer dark:bg-[#233332]">پایین</button>
+        <div class="h-6 w-px bg-[#EBEDEF] dark:bg-[#293242]"></div>
+        <button
+        id="medium" data-color = "#FFAF37" data-secondcolor ="#FFEFD6"
+          class="bg-[#FFEFD6] hover:bg-[#FFD9A8] rounded-lg p-2 text-xs text-[#FFAF37] cursor-pointer dark:bg-[#302F2D]">متوسط</button>
+        <div class="h-6 w-px bg-[#EBEDEF] dark:bg-[#293242]"></div>
+        <button
+        id="high" data-color = "#FF5F37" data-secondcolor ="#FFE2DB"
+          class="bg-[#FFE2DB] hover:bg-[#FFC4B8] rounded-lg p-2 text-xs text-[#FF5F37] cursor-pointer dark:bg-[#3D2327]">بالا</button>
+      </div>
+ 
       <!-- <button data-color="#11A483" id="low-priority-button" class="inline-flex gap-2 text-[#11A483] bg-[#C3FFF1] rounded-lg px-2 py-1 dark:bg-[#233332]">
         <svg class="w-4  text-black dark:text-white cursor-pointer " fill="none" stroke="currentColor"
           viewBox="0 0 24 24">
@@ -506,25 +527,6 @@
         </svg>
         <span>بالا</span>
       </button> -->
-      </div>
-
-
-      <div
-      id="choose-priority"
-        class=" hidden justify-between items-center p-2 m-5 gap-5 border border-[#EBEDEF] rounded-lg shadow-[0_12px_24px_-6px_rgba(20,20,25,0.06)] dark:bg-[#0B192D] dark:border-[#293242]">
-        <button
-        id="low" data-color = "#11A483" data-secondcolor ="#C3FFF1"
-          class="bg-[#C3FFF1] hover:bg-[#8CE6CC] rounded-lg p-2 text-xs text-[#11A483] cursor-pointer dark:bg-[#233332]">پایین</button>
-        <div class="h-6 w-px bg-[#EBEDEF] dark:bg-[#293242]"></div>
-        <button
-        id="medium" data-color = "#FFAF37" data-secondcolor ="#FFEFD6"
-          class="bg-[#FFEFD6] hover:bg-[#FFD9A8] rounded-lg p-2 text-xs text-[#FFAF37] cursor-pointer dark:bg-[#302F2D]">متوسط</button>
-        <div class="h-6 w-px bg-[#EBEDEF] dark:bg-[#293242]"></div>
-        <button
-        id="high" data-color = "#FF5F37" data-secondcolor ="#FFE2DB"
-          class="bg-[#FFE2DB] hover:bg-[#FFC4B8] rounded-lg p-2 text-xs text-[#FF5F37] cursor-pointer dark:bg-[#3D2327]">بالا</button>
-      </div>
-
 
 
       <div class="flex mt-5 border-t border-[#E9E9E9] pt-5  dark:border-[#3D3D3D]" dir="ltr">
@@ -548,7 +550,7 @@
     <section id="uncomplete-todos-container" class=" mx-auto  max-w-[1000px] min-w-[250px]"> <!-- px-4 -->
 
       <!-- کارت اول -->
-       <div class="flex flex-col">
+       <!-- <div class="flex flex-col">
       <div
         class="flex items-center bg-white dark:bg-[#091120] rounded-xl border border-[#E9E9E9] dark:border-gray-700 mb-3 relative">
         <div class="w-1 bg-[#FF5F37] self-stretch rounded-l-full my-3"></div>
@@ -595,26 +597,16 @@
         </button>
  
 
-      </div>
+      </div> -->
       <!-- editing section  -->
 
-  <section
+  <!-- <section
       class="bg-[#FFFFFF] border border-[#E9E9E9] rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.06)] p-5 mb-5 dark:bg-[#060C18] dark:border-[#3D3D3D] max-w-[1000px] min-w-[250px]">
       <input type="text" placeholder="نام تسک" class="text-[#242424] placeholder:text-[#7D7D7F] focus:outline-none dark:text-[#FFFFFF] w-full" value="جلسه با مدیران پروژه" />
       <br>
       <input type="text" placeholder="توضیحات" class="text-[#AFAEB2] text-xs dark:text-[#83878F] w-full focus:outline-none" value="جلسه با محسن یگانه و مریم جلالی" />
 
-      <!-- <button
-        class="flex items-center rounded-lg border border-[#E9E9E9] my-5 p-1 cursor-pointer dark:border-[#83878F]">
-        <img src="./assets/images/tag-right.svg" alt="tags">
-        <span class=" text-neutral-400 m-1 text-sm">تگ‌ها</span>
-      </button>
-
-      <button
-        class="flex items-center rounded-lg border border-[#E9E9E9] my-5 p-1 cursor-pointer dark:border-[#83878F]">
-        <img src="./assets/images/tag-right 2.svg" alt="tags">
-        <span class=" text-neutral-400 m-1 text-sm">تگ‌ها</span>
-      </button> -->
+      
 
       <button class="inline-flex gap-2 text-[#11A483] bg-[#C3FFF1] rounded-lg px-2 py-1 dark:bg-[#233332]">
         <svg class="w-4  text-black dark:text-white cursor-pointer " fill="none" stroke="currentColor"
@@ -666,12 +658,12 @@
           </svg>
         </button>
       </div>
-    </section>
+    </section> -->
 
 </div>
 
       <!-- کارت دوم -->
-      <div
+      <!-- <div
         class="flex items-center bg-white dark:bg-[#091120] rounded-xl border border-[#E9E9E9] dark:border-gray-700 mb-3">
         <div class="w-1 bg-[#FFAF37] self-stretch rounded-l-full my-3"></div>
         <div class="flex-1 py-3 px-4">
@@ -694,10 +686,10 @@
           <span class="w-1 h-1 rounded-full bg-[#525252] dark:bg-gray-400"></span>
           <span class="w-1 h-1 rounded-full bg-[#525252] dark:bg-gray-400"></span>
         </button>
-      </div>
+      </div> -->
 
       <!-- کارت سوم -->
-      <div
+      <!-- <div
         class="flex items-center bg-white dark:bg-[#091120] rounded-xl border border-[#E9E9E9] dark:border-gray-700 mb-3">
         <div class="w-1 bg-[#11A483] self-stretch rounded-l-full my-3"></div>
         <div class="flex-1 py-3 px-4">
@@ -721,7 +713,7 @@
           <span class="w-1 h-1 rounded-full bg-[#525252] dark:bg-gray-400"></span>
         </button>
       </div>
-    </section>
+    </section> -->
 
     <!-- complete todos container -->
     <section class="flex flex-col gap-4 max-w-[1000px] min-w-[250px] mx-auto mt-16">
@@ -730,13 +722,13 @@
           تسک‌های انجام شده
         </h3>
         <p id="completed-task-counter" class="text-[12px] text-[#696969] md:text-[14px] dark:text-[#848890]">
-         تسکی برای امروز نداری!
+         تسکی امروز انجام ندادی!
         </p>
       </div>
       <div id="completed-task-container" class="flex flex-col gap-4 w-full mx-auto">
         <!-- completed tasks -->
 
-        <div
+        <!-- <div
           class="w-full min-h-16 border border-[#E9E9E9] rounded-xl px-4 py-3 flex items-center justify-between dark:bg-[#091120] dark:border-none relative">
           <div class="w-1 h-11 md:h-12  bg-[var(--color-primary-yellow)] rounded-l-lg absolute right-0"></div>
           <div class="flex justify-start items-center gap-4 md:gap-3 max-w-[700px]">
@@ -812,7 +804,7 @@
             </svg>
           </div>
 
-        </div>
+        </div> -->
 
 
 

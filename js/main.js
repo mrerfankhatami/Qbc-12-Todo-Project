@@ -15,7 +15,7 @@ function addTodo() {
   };
 
   todos = [...todos, newTodo];
-  //   saveTodos(todos);
+  saveTodosToLocalStorage(todos);
 }
 
 // render todo list
@@ -44,7 +44,7 @@ function renderTodo() {
             <div class="border border-[#EBEDEF] h-[20px] dark:border-[#293242]"></div>
 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="size-6 stroke-[#5C5F61] dark:stroke-[#FFFFFF] hover:stroke-green-500 hover:cursor-pointer">
+              stroke="currentColor" class="size-6 stroke-[#5C5F61] dark:stroke-[#FFFFFF] hover:stroke-green-500 hover:cursor-pointer" onclick="editTodo('${todo.id}')">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
             </svg>
@@ -82,74 +82,79 @@ function renderTodo() {
 
     ${
       todo.editing
-        ? `<section
-      class="bg-[#FFFFFF] border border-[#E9E9E9] rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.06)] p-5 mb-5 dark:bg-[#060C18] dark:border-[#3D3D3D] max-w-[1000px] min-w-[250px]">
-      <input type="text" placeholder="نام تسک" class="text-[#242424] placeholder:text-[#7D7D7F] focus:outline-none dark:text-[#FFFFFF] w-full" value="جلسه با مدیران پروژه" />
+        ? ` <section
+    id="add-task-section"
+      class=" w-full bg-[#FFFFFF] border border-[#E9E9E9] rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.06)] p-5 m-5 dark:bg-[#060C18] dark:border-[#3D3D3D] max-w-[1000px] min-w-[250px] mx-auto duration-300 transition-all">
+      <input id="title-edit-input" type="text" placeholder="نام تسک" class="text-[#242424] placeholder:text-[#7D7D7F] focus:outline-none pb-2 text-lg dark:text-[#FFFFFF] w-full" value="${todo.text}" />
       <br>
-      <input type="text" placeholder="توضیحات" class="text-[#AFAEB2] text-xs dark:text-[#83878F] w-full focus:outline-none" value="جلسه با محسن یگانه و مریم جلالی" />
+      <input id="description-edit-input" type="text" placeholder="توضیحات" class="text-[#AFAEB2] text-xs focus:outline-none dark:text-[#83878F] w-full" value= "${todo.desc}" />
 
-      <!-- <button
-        class="flex items-center rounded-lg border border-[#E9E9E9] my-5 p-1 cursor-pointer dark:border-[#83878F]">
-        <img src="./assets/images/tag-right.svg" alt="tags">
-        <span class=" text-neutral-400 m-1 text-sm">تگ‌ها</span>
-      </button>
+      <div id="priortiy-div" class="">
+        
+      ${
+        todo.priority
+          ? `
+<div class="mt-5">
 
-      <button
-        class="flex items-center rounded-lg border border-[#E9E9E9] my-5 p-1 cursor-pointer dark:border-[#83878F]">
-        <img src="./assets/images/tag-right 2.svg" alt="tags">
-        <span class=" text-neutral-400 m-1 text-sm">تگ‌ها</span>
-      </button> -->
+<button
+class="inline-flex items-center gap-2 
+bg-[${todo.prioritySecondaryColor}]
+text-[${todo.priorityColor}]
+rounded-lg px-2 py-1">
 
-      <button class="inline-flex gap-2 text-[#11A483] bg-[#C3FFF1] rounded-lg px-2 py-1 dark:bg-[#233332]">
-        <svg class="w-4  text-black dark:text-white cursor-pointer " fill="none" stroke="currentColor"
-          viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-        <span>پایین</span>
-      </button>
+<span class="text-xs">
+${
+  todo.priority === "low"
+    ? "پایین"
+    : todo.priority === "medium"
+      ? "متوسط"
+      : "بالا"
+}
+</span>
 
-      <button class="inline-flex gap-2  bg-[#FFEFD6] rounded-lg px-2 py-1 dark:bg-[#302F2D]">
-        <svg class="w-4  text-black dark:text-white cursor-pointer" fill="none" stroke="currentColor"
-          viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-        <span class="text-[#FFAF37]">متوسط</span>
-      </button>
+</button>
 
-      <button class="inline-flex gap-2 text-[#FF5F37] bg-[#FFE2DB] rounded-lg px-2 py-1 dark:bg-[#3D2327]">
-        <svg class="w-4  text-black dark:text-white cursor-pointer" fill="none" stroke="currentColor"
-          viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-        <span>بالا</span>
-      </button>
+</div>
+`
+          : ""
+      }
+      
+      </div>
 
 
       <div
-        class="inline-flex p-2 m-5 gap-5 border border-[#EBEDEF] rounded-lg shadow-[0_12px_24px_-6px_rgba(20,20,25,0.06)] dark:bg-[#0B192D] dark:border-[#293242]">
+      id="choose-priority"
+        class=" hidden justify-between items-center p-2 m-5 gap-5 border border-[#EBEDEF] rounded-lg shadow-[0_12px_24px_-6px_rgba(20,20,25,0.06)] dark:bg-[#0B192D] dark:border-[#293242]">
         <button
+        id="low" data-color = "#11A483" data-secondcolor ="#C3FFF1"
           class="bg-[#C3FFF1] hover:bg-[#8CE6CC] rounded-lg p-2 text-xs text-[#11A483] cursor-pointer dark:bg-[#233332]">پایین</button>
         <div class="h-6 w-px bg-[#EBEDEF] dark:bg-[#293242]"></div>
         <button
+        id="medium" data-color = "#FFAF37" data-secondcolor ="#FFEFD6"
           class="bg-[#FFEFD6] hover:bg-[#FFD9A8] rounded-lg p-2 text-xs text-[#FFAF37] cursor-pointer dark:bg-[#302F2D]">متوسط</button>
         <div class="h-6 w-px bg-[#EBEDEF] dark:bg-[#293242]"></div>
         <button
+        id="high" data-color = "#FF5F37" data-secondcolor ="#FFE2DB"
           class="bg-[#FFE2DB] hover:bg-[#FFC4B8] rounded-lg p-2 text-xs text-[#FF5F37] cursor-pointer dark:bg-[#3D2327]">بالا</button>
       </div>
 
 
 
-      <div class="flex border-t border-[#E9E9E9] pt-5  dark:border-[#3D3D3D]" dir="ltr">
+      <div class="flex mt-5 border-t border-[#E9E9E9] pt-5  dark:border-[#3D3D3D]" dir="ltr">
+        <button id="sumbit-edit-button"
+        onclick="updateTodo('${todo.id}')"
+          class="border rounded-lg opacity-60 bg-[#007BFF] text-sm text-white py-2 px-3 hover:opacity-100 cursor-pointer dark:bg-[#002247] dark:border-black">ویرایش
+          کردن تسک</button>
         <button
-          class="border rounded-lg opacity-60 bg-[#007BFF] text-sm text-white py-2 px-3 hover:opacity-100 cursor-pointer dark:bg-[#002247] dark:border-black">ویرایش تسک
-           </button>
-        <button
+        id="close-task-section"
           class="border border-[#F5F5F5] mx-1 p-3 bg-[#F5F5F5] rounded-lg hover:bg-[#E8E8E8] cursor-pointer dark:bg-[#0C1B31] dark:border-black">
           <svg class="w-4  text-[#9E9E9E] dark:text-white " fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-      </div>`
+      </div>
+    </section>
+`
         : ``
     }
     </section>
@@ -208,18 +213,32 @@ function renderTodo() {
   });
 }
 
-// // Load Todos from local storage
-// function loadTodosّFromLocalStorage() {
-//   todos = JSON.parse(localStorage.getItem("todos")) || [];
-// }
+// Load Todos from local storage
+function loadTodosّFromLocalStorage() {
+  todos = JSON.parse(localStorage.getItem("todos")) || [];
+}
 
-// // Save Todos to local storage
-// function saveTodosToLocalStorage(todosArrey) {
-//   localStorage.setItem("todos", JSON.stringify(todosArrey));
-// }
+// Save Todos to local storage
+function saveTodosToLocalStorage(todosArrey) {
+  localStorage.setItem("todos", JSON.stringify(todosArrey));
+}
 
 // update todo
-function updateTodo(id) {}
+window.updateTodo = function (id) {
+  const todo = todos.find((todo) => todo.id === id);
+
+  if (!todo) return;
+  const editText = document.getElementById("title-edit-input");
+  const editDesc = document.getElementById("description-edit-input");
+
+  todo.text = editText.value;
+  todo.desc = editDesc.value;
+
+  todo.editing = false;
+
+  saveTodosToLocalStorage(todos);
+  renderTodo();
+};
 
 // delete incomplete todo
 function deleteIncompleteTodo(id) {
@@ -229,6 +248,8 @@ function deleteIncompleteTodo(id) {
       break;
     }
   }
+
+  saveTodosToLocalStorage(todos);
   renderTodo();
 }
 
@@ -240,12 +261,16 @@ function deleteCompletedTodo(id) {
       break;
     }
   }
+
+  saveTodosToLocalStorage(todos);
   renderTodo();
 }
 
 const submitButton = document.getElementById("sumbit-button");
 submitButton.addEventListener("click", () => {
   addTodo();
+
+  saveTodosToLocalStorage(todos);
   renderTodo();
 });
 
@@ -342,7 +367,8 @@ function completeTaskCounterUpdate() {
 }
 
 window.openDeleteEdit = function (button) {
-  const menu = document.querySelector(".task-menu");
+  const taskContainer = button.closest(".relative");
+  const menu = taskContainer.querySelector(".task-menu");
   menu.classList.toggle("hidden");
   menu.classList.toggle("flex");
 };
@@ -370,5 +396,13 @@ window.completeTask = function (id) {
 
   todo.completed = !todo.completed;
 
+  saveTodosToLocalStorage(todos);
+  renderTodo();
+};
+
+window.editTodo = (id) => {
+  const todo = todos.find((todo) => todo.id === id);
+
+  todo.editing = !todo.editing;
   renderTodo();
 };
