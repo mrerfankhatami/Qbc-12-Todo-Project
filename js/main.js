@@ -1,4 +1,5 @@
 //  Todo app Functionality
+import './sidebar.js';
 let todos = [];
 
 // add todos
