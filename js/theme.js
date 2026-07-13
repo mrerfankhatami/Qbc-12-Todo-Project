@@ -1,8 +1,7 @@
 // dark and light theme functionallity
+const darkBtn = document.getElementById("theme-dark-btn");
+const lightBtn = document.getElementById("theme-light-btn");
 export function initTheme() {
-  const darkBtn = document.getElementById("theme-dark-btn");
-  const lightBtn = document.getElementById("theme-light-btn");
-
   const isDark = localStorage.getItem("theme") === "dark";
   document.documentElement.classList.toggle("dark", isDark);
 
@@ -20,3 +19,11 @@ export function initTheme() {
     });
   }
 }
+
+darkBtn.addEventListener("click", () => {
+  initTheme();
+});
+
+lightBtn.addEventListener("click", () => {
+  initTheme();
+});

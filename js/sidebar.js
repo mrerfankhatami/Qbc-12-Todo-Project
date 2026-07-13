@@ -34,10 +34,9 @@ export function displayPersianDate() {
   const date = new Date();
 
   const basePersianDate = new Intl.DateTimeFormat("fa-IR-u-ca-persian", {
-    weekday: "long",
     year: "numeric",
-    month: "long",
-    day: "numeric",
+    month: "2-digit",
+    day: "2-digit",
   }).format(date);
 
   if (sidebarDate) {
