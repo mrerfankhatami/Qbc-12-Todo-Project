@@ -1,6 +1,6 @@
 //  Todo app Functionality
-import './sidebar.js';
-import './theme.js';
+import "./sidebar.js";
+import "./theme.js";
 
 let todos = [];
 
@@ -44,7 +44,7 @@ function renderTodo() {
             </svg>
 
 
-            <div class="border border-[#EBEDEF] h-[20px] dark:border-[#293242]"></div>
+            <div class="border border-[#EBEDEF] h-5 dark:border-[#293242]"></div>
 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="size-6 stroke-[#5C5F61] dark:stroke-[#FFFFFF] hover:stroke-green-500 hover:cursor-pointer" onclick="editTodo('${todo.id}')">
@@ -64,7 +64,7 @@ function renderTodo() {
              <div class="flex gap-3">
                <span class="text-[14px] font-semibold text-[#242424] dark:text-white">${todo.text}</span>
               <span
-                class="text-[10px] font-semibold bg-[${todo.prioritySecondaryColor}] dark:bg-[${todo.prioritySecondaryColor}/50] text-[${todo.priorityColor}] dark:text-[${todo.priorityColor}/70] px-2 py-1 rounded-[4px]  inline-flex items-center justify-center">${todo.priority === "high" ? "بالا" : todo.priority === "medium" ? "متوسط" : "پایین"}</span>
+                class="text-[10px] font-semibold bg-[${todo.prioritySecondaryColor}] dark:bg-[${todo.prioritySecondaryColor}/50] text-[${todo.priorityColor}] dark:text-[${todo.priorityColor}/70] px-2 py-1 rounded-sm  inline-flex items-center justify-center">${todo.priority === "high" ? "بالا" : todo.priority === "medium" ? "متوسط" : "پایین"}</span>
              </div>
               <p class="text-[12px] font-normal text-[#7D7D7F] dark:text-gray-400 mt-2">${todo.desc}
               </p>
