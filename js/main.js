@@ -4,7 +4,10 @@ import "./theme.js";
 import "./theme.js";
 
 let todos = [];
-loadTodosّFromLocalStorage();
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadTodosّFromLocalStorage();
+});
 
 // add todos
 function addTodo() {
