@@ -4,6 +4,7 @@ import "./theme.js";
 import "./theme.js";
 
 let todos = [];
+loadTodosّFromLocalStorage();
 
 // add todos
 function addTodo() {
@@ -220,6 +221,7 @@ ${
 // Load Todos from local storage
 function loadTodosّFromLocalStorage() {
   todos = JSON.parse(localStorage.getItem("todos")) || [];
+  renderTodo();
 }
 
 // Save Todos to local storage
