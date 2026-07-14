@@ -383,7 +383,9 @@ window.openDeleteEdit = function (button) {
 };
 
 window.openDeleteEditCompleted = function (button) {
-  const menu = document.querySelector("#task-menu-completed");
+  const task = button.closest(".relative");
+  const menu = task.querySelector("#task-menu-completed");
+
   menu.classList.toggle("hidden");
   menu.classList.toggle("flex");
 };
