@@ -30,30 +30,12 @@ export function closeSidebar() {
   }
 }
 
-export function displayPersianDate() {
-  const date = new Date();
-
-  const basePersianDate = new Intl.DateTimeFormat("fa-IR-u-ca-persian", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(date);
-
-  if (sidebarDate) {
-    sidebarDate.textContent = basePersianDate;
-  }
-
-  if (mobileDate) {
-    mobileDate.textContent = "امروز، " + basePersianDate;
-  }
-}
-
 export function initSidebar() {
   if (hamburgerMenuBtn) hamburgerMenuBtn.addEventListener("click", openSidebar);
   if (closeSidebarBtn) closeSidebarBtn.addEventListener("click", closeSidebar);
   if (sidebarBackdrop) sidebarBackdrop.addEventListener("click", closeSidebar);
 
-  displayPersianDate();
+  // displayPersianDate();
 }
 
 initSidebar();

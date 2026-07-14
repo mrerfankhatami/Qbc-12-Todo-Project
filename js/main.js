@@ -2,11 +2,14 @@
 import "./sidebar.js";
 import "./theme.js";
 import "./theme.js";
+import "./daynamicDate.js";
+import { displayPersianDate } from "./daynamicDate.js";
 
 let todos = [];
 
 document.addEventListener("DOMContentLoaded", () => {
   loadTodosّFromLocalStorage();
+  displayPersianDate();
 });
 
 // add todos
