@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: "Yekan";
+  src: url("./assets/fonts/IRANYekanX-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --color-primary-red: #ff5f37;
+  --color-secondary-red: #ffe2db;
+  --color-primary-yellow: #ffaf37;
+  --color-secondary-yellow: #ffefd6;
+  --color-primary-green: #11a483;
+  --color-secondary-green: #c3fff1;
+  --color-primary-blue: #007bff;
+  --color-secondary-blue: #1a56db;
+  --color-blue-hover: #f0f5ff;
+  --white: #ffffff;
+  --black: #242424;
+  --dark-blue-sidebar: #091120;
+}
+
+* {
+  font-family: "Yekan", sans-serif;
+}

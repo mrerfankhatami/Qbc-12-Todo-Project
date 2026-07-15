@@ -1,0 +1,452 @@
+//  Todo app Functionality
+
+// import all the modular js file
+
+import "./sidebar.js";
+import "./theme.js";
+import "./theme.js";
+import "./daynamicDate.js";
+import { displayPersianDate } from "./daynamicDate.js";
+
+// initialize the todos arrey
+let todos = [];
+
+// load todos from the localstorage and render the dynamic date everytime on the dom content load
+document.addEventListener("DOMContentLoaded", () => {
+  loadTodosّFromLocalStorage();
+  displayPersianDate();
+});
+
+// add todos
+function addTodo() {
+  const newTodo = {
+    id: crypto.randomUUID(),
+    text: document.getElementById("title-input").value,
+    desc: document.getElementById("description-input").value,
+    priority: priority,
+    priorityColor: priorityColor,
+    prioritySecondaryColor: prioritySecondaryColor,
+    completed: false,
+    editing: false,
+  };
+
+  todos = [...todos, newTodo];
+  saveTodosToLocalStorage(todos);
+}
+
+// render todo list
+function renderTodo() {
+  const incompleteContainer = document.getElementById(
+    "uncomplete-todos-container",
+  );
+  incompleteContainer.innerHTML = "";
+  todos.forEach((todo) => {
+    if (todo.completed) return;
+    incompleteContainer.innerHTML += ` <div class="flex flex-col">
+      <div
+        class="flex items-center bg-white dark:bg-[#091120] rounded-xl border border-[#E9E9E9] dark:border-gray-700 mb-3 relative">
+        <div class="w-1 bg-[${todo.color}] self-stretch rounded-l-full my-3"></div>
+        <div
+        
+      class="task-menu hidden absolute w-20 h-8 border border-[#EBEDEF] rounded-lg p-1 items-center justify-around left-5 top-2 dark:bg-[#0B192D] dark:border-[#293242]">
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" id="delete-btn" class="size-6 stroke-[#5C5F61] dark:stroke-[#FFFFFF] hover:stroke-red-600 hover:cursor-pointer" onClick="deleteTodo('${todo.id}')">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+            </svg>
+
+
+            <div class="border border-[#EBEDEF] h-5 dark:border-[#293242]"></div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="size-6 stroke-[#5C5F61] dark:stroke-[#FFFFFF] hover:stroke-green-500 hover:cursor-pointer" onclick="editTodo('${todo.id}')">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+            </svg>
+
+            
+
+
+          </div>
+        <div class="flex-1 py-3 px-4">
+          <div class="flex items-start gap-4">
+            <input type="checkbox" id="task-check" onClick="completeTask('${todo.id}')"
+              class="w-5 h-5 rounded-[5px] border border-[#CCCCCC] appearance-none checked:bg-[#007BFF] checked:border-[#007BFF] focus:ring-2 focus:ring-[#007BFF]" />
+            <div class="flex flex-col gap-1">
+             <div class="flex gap-3">
+               <span class="text-[14px] font-semibold text-[#242424] dark:text-white">${todo.text}</span>
+              <span
+                class="text-[10px] font-semibold bg-[${todo.prioritySecondaryColor}] dark:bg-[${todo.prioritySecondaryColor}/50] text-[${todo.priorityColor}] dark:text-[${todo.priorityColor}/70] px-2 py-1 rounded-sm  inline-flex items-center justify-center">${todo.priority === "high" ? "بالا" : todo.priority === "medium" ? "متوسط" : "پایین"}</span>
+             </div>
+              <p class="text-[12px] font-normal text-[#7D7D7F] dark:text-gray-400 mt-2">${todo.desc}
+              </p>
+            </div>
+          </div>
+        </div>
+        <button class="flex flex-col gap-[3px] items-center justify-center py-3 px-2 self-start cursor-pointer" onclick="openDeleteEdit(this)">
+          <span class="w-1 h-1 rounded-full bg-[#525252] dark:bg-gray-400"></span>
+          <span class="w-1 h-1 rounded-full bg-[#525252] dark:bg-gray-400"></span>
+          <span class="w-1 h-1 rounded-full bg-[#525252] dark:bg-gray-400"></span>
+        </button>
+
+
+ 
+
+      </div>
+      <!-- editing section  -->
+
+    ${
+      todo.editing
+        ? ` <section
+    id="add-task-section"
+      class=" w-full bg-[#FFFFFF] border border-[#E9E9E9] rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.06)] p-5 m-5 dark:bg-[#060C18] dark:border-[#3D3D3D] max-w-[1000px] min-w-[250px] mx-auto duration-300 transition-all">
+      <input id="title-edit-input" type="text" placeholder="نام تسک" class="text-[#242424] placeholder:text-[#7D7D7F] focus:outline-none pb-2 text-lg dark:text-[#FFFFFF] w-full" value="${todo.text}" />
+      <br>
+      <input id="description-edit-input" type="text" placeholder="توضیحات" class="text-[#AFAEB2] text-xs focus:outline-none dark:text-[#83878F] w-full" value= "${todo.desc}" />
+
+      <div id="priortiy-div" class="">
+        
+      ${
+        todo.priority
+          ? `
+<div class="mt-5">
+
+<button
+class="inline-flex items-center gap-2 
+bg-[${todo.prioritySecondaryColor}]
+text-[${todo.priorityColor}]
+rounded-lg px-2 py-1">
+
+<span class="text-xs">
+${
+  todo.priority === "low"
+    ? "پایین"
+    : todo.priority === "medium"
+      ? "متوسط"
+      : "بالا"
+}
+</span>
+
+</button>
+
+</div>
+`
+          : ""
+      }
+      
+      </div>
+
+
+      <div
+      id="choose-priority"
+        class=" hidden justify-between items-center p-2 m-5 gap-5 border border-[#EBEDEF] rounded-lg shadow-[0_12px_24px_-6px_rgba(20,20,25,0.06)] dark:bg-[#0B192D] dark:border-[#293242]">
+        <button
+        id="low" data-color = "#11A483" data-secondcolor ="#C3FFF1"
+          class="bg-[#C3FFF1] hover:bg-[#8CE6CC] rounded-lg p-2 text-xs text-[#11A483] cursor-pointer dark:bg-[#233332]">پایین</button>
+        <div class="h-6 w-px bg-[#EBEDEF] dark:bg-[#293242]"></div>
+        <button
+        id="medium" data-color = "#FFAF37" data-secondcolor ="#FFEFD6"
+          class="bg-[#FFEFD6] hover:bg-[#FFD9A8] rounded-lg p-2 text-xs text-[#FFAF37] cursor-pointer dark:bg-[#302F2D]">متوسط</button>
+        <div class="h-6 w-px bg-[#EBEDEF] dark:bg-[#293242]"></div>
+        <button
+        id="high" data-color = "#FF5F37" data-secondcolor ="#FFE2DB"
+          class="bg-[#FFE2DB] hover:bg-[#FFC4B8] rounded-lg p-2 text-xs text-[#FF5F37] cursor-pointer dark:bg-[#3D2327]">بالا</button>
+      </div>
+
+
+
+      <div class="flex mt-5 border-t border-[#E9E9E9] pt-5  dark:border-[#3D3D3D]" dir="ltr">
+        <button id="sumbit-edit-button"
+        onclick="updateTodo('${todo.id}')"
+          class="border rounded-lg opacity-60 bg-[#007BFF] text-sm text-white py-2 px-3 hover:opacity-100 cursor-pointer dark:bg-[#002247] dark:border-black">ویرایش
+          کردن تسک</button>
+        <button
+        id="close-task-section"
+          class="border border-[#F5F5F5] mx-1 p-3 bg-[#F5F5F5] rounded-lg hover:bg-[#E8E8E8] cursor-pointer dark:bg-[#0C1B31] dark:border-black">
+          <svg class="w-4  text-[#9E9E9E] dark:text-white " fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </section>
+`
+        : ``
+    }
+    </section>
+
+</div>`;
+  });
+
+  // update the rendering of page elements such as NoTaskImage and task counter
+  checkNoTaskImage();
+  taskCounterUpdate();
+  completeTaskCounterUpdate();
+
+  // render completed todos
+  const completedTaskContainer = document.getElementById(
+    "completed-task-container",
+  );
+  completedTaskContainer.innerHTML = ``;
+  todos.forEach((todo) => {
+    if (!todo.completed) return;
+
+    completedTaskContainer.innerHTML += `
+            <div
+          class="w-full min-h-16 border border-[#E9E9E9] rounded-xl px-4 py-3 flex items-center justify-between dark:bg-[#091120] dark:border-none relative">
+          <div class="w-1 h-11 md:h-12  bg-[${todo.priorityColor}] rounded-l-lg absolute right-0"></div>
+          <div class="flex justify-start items-center gap-4 md:gap-3 max-w-[700px]">
+            <input type="checkbox" id="task-check" checked 
+              class="w-5 h-5 rounded-[5px] border border-[#CCCCCC] appearance-none checked:bg-[#007BFF] checked:border-[#007BFF] focus:ring-2 focus:ring-[#007BFF]" onClick="completeTask('${todo.id}')"/>
+            <div class="max-w-[550px]">
+              <label for="task-check"
+                class="tex-[14px] text-[#323233] font-semibold line-through md:text-[16px] dark:text-white">
+              ${todo.text}
+            </div>
+          </div>
+          <div id="task-menu-completed"
+            class="hidden absolute w-10 h-8 border border-[#EBEDEF] rounded-lg p-1  items-center justify-around left-10 top-4 dark:bg-[#0B192D] dark:border-[#293242]">
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="size-6 stroke-[#5C5F61] dark:stroke-[#FFFFFF] hover:stroke-red-600 hover:cursor-pointer" onClick="deleteTodo('${todo.id}')">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+            </svg>
+
+
+           
+
+
+
+          </div>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" onclick="openDeleteEditCompleted(this)"
+              stroke="currentColor" class="size-7 text-[#525252] dark:text-white cursor-pointer">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+            </svg>
+          </div>
+        </div>
+`;
+  });
+}
+
+// Load Todos from local storage
+function loadTodosّFromLocalStorage() {
+  todos = JSON.parse(localStorage.getItem("todos")) || [];
+  renderTodo();
+}
+
+// Save Todos to local storage
+function saveTodosToLocalStorage(todosArrey) {
+  localStorage.setItem("todos", JSON.stringify(todosArrey));
+}
+
+// update todo
+window.updateTodo = function (id) {
+  const todo = todos.find((todo) => todo.id === id);
+
+  if (!todo) return;
+  const editText = document.getElementById("title-edit-input");
+  const editDesc = document.getElementById("description-edit-input");
+
+  todo.text = editText.value;
+  todo.desc = editDesc.value;
+
+  todo.editing = false;
+
+  saveTodosToLocalStorage(todos);
+  renderTodo();
+};
+
+// delete incomplete todo
+function deleteIncompleteTodo(id) {
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].id === id) {
+      todos.splice(i, 1);
+      break;
+    }
+  }
+
+  saveTodosToLocalStorage(todos);
+  renderTodo();
+}
+
+// delete completed todo
+function deleteCompletedTodo(id) {
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].id === id) {
+      todos.splice(i, 1);
+      break;
+    }
+  }
+
+  saveTodosToLocalStorage(todos);
+  renderTodo();
+}
+
+const submitButton = document.getElementById("sumbit-button");
+submitButton.addEventListener("click", () => {
+  addTodo();
+
+  const title = document.getElementById("title-input");
+  const descInput = document.getElementById("description-input");
+
+  title.value = "";
+  descInput.value = "";
+
+  saveTodosToLocalStorage(todos);
+  renderTodo();
+});
+
+//  priorty tag interactivity
+
+const tagButton = document.getElementById("tag-button");
+const tagImage = document.getElementById("tag-image");
+const choosePriority = document.getElementById("choose-priority");
+tagButton.addEventListener("click", () => {
+  tagImage.classList.toggle("rotate-90");
+  choosePriority.classList.toggle("hidden");
+  choosePriority.classList.toggle("inline-flex");
+});
+
+// task variable reset
+
+let priority = null;
+let priorityColor = null;
+let prioritySecondaryColor = null;
+
+// tag picked and tag added functionality
+
+choosePriority.addEventListener("click", (e) => {
+  choosePriority.classList.toggle("hidden");
+  choosePriority.classList.toggle("inline-flex");
+
+  const button = e.target.closest("button");
+  //   console.log(button); just to make sure the code works and future showing
+  if (!button) return;
+
+  priority = button.id;
+  priorityColor = button.dataset.color;
+  prioritySecondaryColor = button.dataset.secondcolor;
+
+  const priortiyDiv = document.getElementById("priortiy-div");
+
+  priortiyDiv.innerHTML = `
+    <button data-color="${priorityColor}" id="${priority}-priority-button" class="inline-flex mt-5 gap-2 text-[${priorityColor}] bg-[${prioritySecondaryColor}] rounded-lg px-2 py-1 dark:bg-[#233332]">
+        <svg id="priority-remove" class="w-4  text-black dark:text-white cursor-pointer " fill="none" stroke="currentColor" onClick="closePriority()"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        <span>${priority === "low" ? "پایین" : priority === "medium" ? "متوسط" : "بالا"}</span>
+      </button>
+`;
+  tagButton.classList.toggle("hidden");
+  tagImage.classList.toggle("rotate-90");
+});
+
+// NoTaskImage
+const noTaskImage = document.getElementById("no-task-image");
+function checkNoTaskImage() {
+  if (todos.length > 0) {
+    noTaskImage.classList.remove("block");
+    noTaskImage.classList.add("hidden");
+  } else if (todos.length === 0) {
+    noTaskImage.classList.add("block");
+    noTaskImage.classList.remove("hidden");
+  }
+}
+
+//  add task interactivity
+const addTaskBtn = document.getElementById("add-task");
+const addTaskSection = document.getElementById("add-task-section");
+const closeTaskSection = document.getElementById("close-task-section");
+
+addTaskBtn.addEventListener("click", () => {
+  addTaskSection.classList.toggle("hidden");
+});
+
+closeTaskSection.addEventListener("click", () => {
+  addTaskSection.classList.toggle("hidden");
+});
+
+window.closePriority = function () {
+  const priortiyDiv = document.getElementById("priortiy-div");
+  priortiyDiv.innerHTML = ``;
+  priority = null;
+  priorityColor = null;
+  prioritySecondaryColor = null;
+  tagButton.classList.toggle("hidden");
+};
+
+//  task counter Update
+
+function taskCounterUpdate() {
+  const taskCounter = document.getElementById("task-counter");
+
+  const incompleteTodo = todos.filter((todo) => !todo.completed);
+
+  taskCounter.textContent =
+    incompleteTodo.length === 0
+      ? "تسکی برای امروز نداری!"
+      : `${incompleteTodo.length} تسک را باید انجام دهید.`;
+}
+
+//  completed Task Counter Update
+function completeTaskCounterUpdate() {
+  const taskCounter = document.getElementById("completed-task-counter");
+  const completeTodo = todos.filter((todo) => todo.completed);
+  taskCounter.textContent =
+    completeTodo.length === 0
+      ? "تسکی برای امروز نداری!"
+      : `${completeTodo.length} تسک را باید انجام دهید.`;
+}
+
+//  Opens Delete and edits menu
+
+window.openDeleteEdit = function (button) {
+  const taskContainer = button.closest(".relative");
+  const menu = taskContainer.querySelector(".task-menu");
+  menu.classList.toggle("hidden");
+  menu.classList.toggle("flex");
+};
+
+window.openDeleteEditCompleted = function (button) {
+  const task = button.closest(".relative");
+  const menu = task.querySelector("#task-menu-completed");
+
+  menu.classList.toggle("hidden");
+  menu.classList.toggle("flex");
+};
+
+// delete task interactivty
+window.deleteTodo = function (id) {
+  const todo = todos.find((todo) => todo.id === id);
+  if (!todo) return;
+
+  if (todo.completed) {
+    deleteCompletedTodo(id);
+  } else {
+    deleteIncompleteTodo(id);
+  }
+};
+
+// Comepleting Task
+
+window.completeTask = function (id) {
+  const todo = todos.find((todo) => todo.id === id);
+  if (!todo) return;
+
+  todo.completed = !todo.completed;
+
+  saveTodosToLocalStorage(todos);
+  renderTodo();
+};
+
+// Opens Editing Section of each task
+window.editTodo = (id) => {
+  const todo = todos.find((todo) => todo.id === id);
+
+  todo.editing = !todo.editing;
+  renderTodo();
+};
