@@ -1,4 +1,7 @@
 // side bar interativity and functionallity | opening and closing side bar | date
+
+// get all the elements of the sidebar needed for interactivity
+
 const hamburgerMenuBtn = document.getElementById("hamburger-menu-btn");
 const mainSidebar = document.getElementById("main-sidebar");
 const closeSidebarBtn = document.getElementById("close-sidebar-btn");
@@ -38,4 +41,5 @@ export function initSidebar() {
   // displayPersianDate();
 }
 
+// invoke the sidebar function
 initSidebar();

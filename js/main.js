@@ -1,12 +1,17 @@
 //  Todo app Functionality
+
+// import all the modular js file
+
 import "./sidebar.js";
 import "./theme.js";
 import "./theme.js";
 import "./daynamicDate.js";
 import { displayPersianDate } from "./daynamicDate.js";
 
+// initialize the todos arrey
 let todos = [];
 
+// load todos from the localstorage and render the dynamic date everytime on the dom content load
 document.addEventListener("DOMContentLoaded", () => {
   loadTodosّFromLocalStorage();
   displayPersianDate();
@@ -173,10 +178,12 @@ ${
 </div>`;
   });
 
+  // update the rendering of page elements such as NoTaskImage and task counter
   checkNoTaskImage();
   taskCounterUpdate();
   completeTaskCounterUpdate();
 
+  // render completed todos
   const completedTaskContainer = document.getElementById(
     "completed-task-container",
   );
@@ -282,9 +289,17 @@ const submitButton = document.getElementById("sumbit-button");
 submitButton.addEventListener("click", () => {
   addTodo();
 
+  const title = document.getElementById("title-input");
+  const descInput = document.getElementById("description-input");
+
+  title.value = "";
+  descInput.value = "";
+
   saveTodosToLocalStorage(todos);
   renderTodo();
 });
+
+//  priorty tag interactivity
 
 const tagButton = document.getElementById("tag-button");
 const tagImage = document.getElementById("tag-image");
@@ -295,9 +310,13 @@ tagButton.addEventListener("click", () => {
   choosePriority.classList.toggle("inline-flex");
 });
 
+// task variable reset
+
 let priority = null;
 let priorityColor = null;
 let prioritySecondaryColor = null;
+
+// tag picked and tag added functionality
 
 choosePriority.addEventListener("click", (e) => {
   choosePriority.classList.toggle("hidden");
@@ -326,6 +345,7 @@ choosePriority.addEventListener("click", (e) => {
   tagImage.classList.toggle("rotate-90");
 });
 
+// NoTaskImage
 const noTaskImage = document.getElementById("no-task-image");
 function checkNoTaskImage() {
   if (todos.length > 0) {
@@ -337,6 +357,7 @@ function checkNoTaskImage() {
   }
 }
 
+//  add task interactivity
 const addTaskBtn = document.getElementById("add-task");
 const addTaskSection = document.getElementById("add-task-section");
 const closeTaskSection = document.getElementById("close-task-section");
@@ -358,6 +379,8 @@ window.closePriority = function () {
   tagButton.classList.toggle("hidden");
 };
 
+//  task counter Update
+
 function taskCounterUpdate() {
   const taskCounter = document.getElementById("task-counter");
 
@@ -369,6 +392,7 @@ function taskCounterUpdate() {
       : `${incompleteTodo.length} تسک را باید انجام دهید.`;
 }
 
+//  completed Task Counter Update
 function completeTaskCounterUpdate() {
   const taskCounter = document.getElementById("completed-task-counter");
   const completeTodo = todos.filter((todo) => todo.completed);
@@ -377,6 +401,8 @@ function completeTaskCounterUpdate() {
       ? "تسکی برای امروز نداری!"
       : `${completeTodo.length} تسک را باید انجام دهید.`;
 }
+
+//  Opens Delete and edits menu
 
 window.openDeleteEdit = function (button) {
   const taskContainer = button.closest(".relative");
@@ -393,6 +419,7 @@ window.openDeleteEditCompleted = function (button) {
   menu.classList.toggle("flex");
 };
 
+// delete task interactivty
 window.deleteTodo = function (id) {
   const todo = todos.find((todo) => todo.id === id);
   if (!todo) return;
@@ -404,6 +431,8 @@ window.deleteTodo = function (id) {
   }
 };
 
+// Comepleting Task
+
 window.completeTask = function (id) {
   const todo = todos.find((todo) => todo.id === id);
   if (!todo) return;
@@ -414,6 +443,7 @@ window.completeTask = function (id) {
   renderTodo();
 };
 
+// Opens Editing Section of each task
 window.editTodo = (id) => {
   const todo = todos.find((todo) => todo.id === id);
 
